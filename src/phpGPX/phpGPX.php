@@ -79,6 +79,29 @@ class phpGPX
 
 		return $gpx;
 	}
+	
+	public static function loadString($string)
+	{
+		$xml = simplexml_load_string($string);
+		$gpx = new GpxFile();
+
+		// Parse creator
+		$gpx->creator = isset($xml['creator']) ? (string) $xml['creator'] : null;
+
+		// Parse metadata
+		$gpx->metadata = isset($xml->metadata) ? MetadataParser::parse($xml->metadata) : null;
+
+		// Parse waypoints
+		$gpx->waypoints = isset($xml->wpt) ? WaypointParser::parse($xml->wpt) : [];
+
+		// Parse tracks
+		$gpx->tracks = isset($xml->trk) ? TrackParser::parse($xml->trk) : [];
+
+		// Parse routes
+		$gpx->routes = isset($xml->rte) ? RouteParser::parse($xml->rte) : [];
+
+		return $gpx;
+	}
 
 	/**
 	 * Create library signature from name and version.
