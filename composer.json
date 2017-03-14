@@ -1,8 +1,8 @@
 {
-  "name": "sibyx/phpgpx",
+  "name": "danmatthews/phpgpx",
   "type": "library",
   "version": "1.0-RC1",
-  "description": "A simple PHP library for GPX import/export",
+  "description": "A simple PHP library for GPX import/export forked from sibyx/phpgpx",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
